@@ -83,11 +83,13 @@
           text: textConfig.text2,
           background: '#fff url("img/iput-bg.jpg")',
         }).then(function () {
-          setTimeout(function () {
-            $(".sreencontent1").append(" <video style='position: relative;left:25%;width: 100vh;height: 100vh;bottom: 50px' autoplay >\n" +
-                    "      <source src=\"img/quesvd.mp4\">\n" +
-                    "    </video>");
-            setTimeout(function (){
+          Swal.fire({
+            background: "black",
+            confirmButtonText: "Trả lời",
+            html:"<video style=\"position: relative;right:3px;height:700px;bottom:-20px\" autoplay >\n" +
+                    "    <source src=\"img/quesvd.mp4\">\\n\" +\n" +
+                    "  </video>"
+          }).then(function () {
               $(".sreencontent1").remove();
               $(document.body).css({
                 backgroundImage :"url(img/Kimura.jpg)",
@@ -95,9 +97,7 @@
                 backgroundSize:"cover"
               });
               $(".content").show();
-            },22500);
-          },2000);
-
+            });
         });
       }
       function switchButton() {
