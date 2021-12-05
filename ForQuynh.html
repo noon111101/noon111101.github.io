@@ -83,18 +83,21 @@
           text: textConfig.text2,
           background: '#fff url("img/iput-bg.jpg")',
         }).then(function () {
-          $(".sreencontent1").append(" <video style='position: relative;left:25%;width: 100vh;height: 100vh;bottom: 50px' autoplay >\n" +
-                  "      <source src=\"img/quesvd.mp4\">\n" +
-                  "    </video>");
-          setTimeout(function (){
-            $(".sreencontent1").remove();
-            $(document.body).css({
-              backgroundImage :"url(img/Kimura.jpg)",
-              backgroundRepeat:"repeat",
-              backgroundSize:"cover"
-            });
-            $(".content").show();
-          },25000);
+          setTimeout(function () {
+            $(".sreencontent1").append(" <video style='position: relative;left:25%;width: 100vh;height: 100vh;bottom: 50px' autoplay >\n" +
+                    "      <source src=\"img/quesvd.mp4\">\n" +
+                    "    </video>");
+            setTimeout(function (){
+              $(".sreencontent1").remove();
+              $(document.body).css({
+                backgroundImage :"url(img/Kimura.jpg)",
+                backgroundRepeat:"repeat",
+                backgroundSize:"cover"
+              });
+              $(".content").show();
+            },22500);
+          },2000);
+
         });
       }
       function switchButton() {
