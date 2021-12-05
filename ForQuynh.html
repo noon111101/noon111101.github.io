@@ -51,9 +51,9 @@
   const textConfig = {
     text1: "Dear Quỳnh ,Có vẻ như !",
     text2: "Em đã dính ảo thuật , trả lời câu hỏi sau để giải ảo thuật nhé.",
-    text7: "lí do em thích anh đi ,trong lúc suy nghĩ e có thể nghe con mèo đánh đàn :>",
-    text8: "Gửi <3",
-    text9: "Vì anh là của em",
+    text3: "lí do em thích anh đi ,trong lúc suy nghĩ e có thể nghe con mèo đánh đàn :>",
+    text4: "Gửi <3",
+    text5: "Vì anh là của em",
   };
   $(".content1").hide();
   $(".content").hide();
@@ -147,7 +147,7 @@
 
       function textGenerate() {
         var n = "";
-        var text = " " + textConfig.text9;
+        var text = " " + textConfig.text5;
         var a = Array.from(text);
         var textVal = $("#txtReason").val() ? $("#txtReason").val() : "";
         var count = textVal.length;
@@ -172,7 +172,7 @@
         audio1.play();
         audio1.volume=0.8;
         Swal.fire({
-          title: textConfig.text7,
+          title: textConfig.text3,
           html: true,
           width: 900,
           padding: "3em",
@@ -189,7 +189,7 @@
           cancelButtonColor: "#d33",
           confirmButtonColor: "#fe8a71",
           cancelButtonColor: "#f6cd61",
-          confirmButtonText: textConfig.text8,
+          confirmButtonText: textConfig.text4,
         }).then((result) => {
           if (result.value) {
             audio1.pause();
