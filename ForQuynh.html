@@ -57,6 +57,94 @@
   };
   $(".content1").hide();
   $(".content").hide();
+  function firstQuestion() {
+    $(".animation").remove();
+    Swal.fire({
+      title: textConfig.text1,
+      text: textConfig.text2,
+      background: '#fff url("img/iput-bg.jpg")',
+    }).then(function () {
+      Swal.fire({
+        background: "black",
+        confirmButtonText: "Trả lời",
+        html:"<video style=\"position: relative;right:3px;height:700px;bottom:-20px\" loop autoplay >\n" +
+                "    <source src=\"img/quesvd.mp4\">\\n\" +\n" +
+                "  </video>"
+      }).then(function () {
+        $(".sreencontent1").remove();
+        $(document.body).css({
+          backgroundImage :"url(img/Kimura.jpg)",
+          backgroundRepeat:"repeat",
+          backgroundSize:"cover"
+        });
+        $(".content").show();
+      });
+    });
+  }
+  var audio = new Audio("sound/tick.mp3");
+  var audio1 = new Audio("sound/howl.mp3");
+  $("#yes").click(function () {
+    audio.play();
+    audio1.play();
+    audio1.volume=0.8;
+    Swal.fire({
+      title: textConfig.text3,
+      html: true,
+      width: 900,
+      padding: "3em",
+      html: "<input type='text' class='form-control' id='txtReason'  placeholder='Whyyy'>",
+      background: '#fff url("img/iput-bg.jpg")',
+      backdrop: `
+                    rgba(0,0,123,0.4)
+                    url("img/catpiano.gif")
+                    left top
+                    no-repeat
+                  `,
+      showCancelButton: false,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonColor: "#fe8a71",
+      cancelButtonColor: "#f6cd61",
+      confirmButtonText: textConfig.text4,
+    }).then((result) => {
+      if (result.value) {
+        audio1.pause();
+        $(".allcontent").empty();
+        $(document.body).css({
+          backgroundImage: "none",
+          backgroundColor:"black"
+        });
+        $(".allcontent").css({
+          display:"grid",
+          gridTemplateColumns:"45% 20% 35%",
+          gridTemplateRows:"30% 40% 30%",
+          gridGap:"10px"
+        })
+        $(".allcontent").append('<div style="grid-column:2/3;grid-row: 1/4 "> <marquee height="768px" direction="down" scrolldelay="2" >Directed by <br> Pham Hai Trieu <br><br>Executive Producer <br> Pham Hai Trieu<br><br>Production Designer<br>Pham Hai Trieu\n' +
+                '  <br><br>Filming support<br>Quang Minh</marquee></div>');
+        $(".allcontent").append(' <video  style="grid-column:1/2;grid-row: 2/3;height: 384px " autoplay >\n' +
+                '        <source src="img/hautruong.mp4">\n' +
+                '      </video>');
+        setTimeout(function (){
+          $(".allcontent").append(' <video  style="grid-column:3/4;grid-row: 2/3;height: 384px " autoplay >\n' +
+                  '        <source src="img/quesvdfun.mp4">\n' +
+                  '      </video>')
+        },14000);
+        setTimeout(function (){
+          $(".allcontent").empty();
+          $(".allcontent").append('<h2 style="grid-column:2/3;position: relative;top: 300px;color: white;" ">The End</h2>')
+        },112000);
+      }
+    });
+    $("#txtReason").focus(function () {
+      var handleWriteText = setInterval(function () {
+        textGenerate();
+      }, 10);
+      $("#txtReason").blur(function () {
+        clearInterval(handleWriteText);
+      });
+    });
+  });
   function full(){
     document.documentElement.requestFullscreen();
     $("body").css("overflow", "hidden");
@@ -69,31 +157,6 @@
         $(".sharin").remove();
         firstQuestion();
       },16100);
-
-      function firstQuestion() {
-        $(".animation").remove();
-        Swal.fire({
-          title: textConfig.text1,
-          text: textConfig.text2,
-          background: '#fff url("img/iput-bg.jpg")',
-        }).then(function () {
-          Swal.fire({
-            background: "black",
-            confirmButtonText: "Trả lời",
-            html:"<video style=\"position: relative;right:3px;height:700px;bottom:-20px\" loop autoplay >\n" +
-                    "    <source src=\"img/quesvd.mp4\">\\n\" +\n" +
-                    "  </video>"
-          }).then(function () {
-              $(".sreencontent1").remove();
-              $(document.body).css({
-                backgroundImage :"url(img/Kimura.jpg)",
-                backgroundRepeat:"repeat",
-                backgroundSize:"cover"
-              });
-              $(".content").show();
-            });
-        });
-      }
       function switchButton() {
         var audio = new Audio("sound/KHABANH.mp3");
         audio.play();
@@ -160,72 +223,7 @@
         }
         $("#txtReason").val(n);
       }
-
       // show popup
-      var audio = new Audio("sound/tick.mp3");
-      var audio1 = new Audio("sound/howl.mp3");
-      $("#yes").click(function () {
-        audio.play();
-        audio1.play();
-        audio1.volume=0.8;
-        Swal.fire({
-          title: textConfig.text3,
-          html: true,
-          width: 900,
-          padding: "3em",
-          html: "<input type='text' class='form-control' id='txtReason'  placeholder='Whyyy'>",
-          background: '#fff url("img/iput-bg.jpg")',
-          backdrop: `
-                    rgba(0,0,123,0.4)
-                    url("img/catpiano.gif")
-                    left top
-                    no-repeat
-                  `,
-          showCancelButton: false,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonColor: "#fe8a71",
-          cancelButtonColor: "#f6cd61",
-          confirmButtonText: textConfig.text4,
-        }).then((result) => {
-          if (result.value) {
-            audio1.pause();
-            $(".allcontent").empty();
-            $(document.body).css({
-              backgroundImage: "none",
-              backgroundColor:"black"
-            });
-            $(".allcontent").css({
-              display:"grid",
-              gridTemplateColumns:"45% 20% 35%",
-              gridTemplateRows:"30% 40% 30%",
-              gridGap:"10px"
-            })
-            $(".allcontent").append('<div style="grid-column:2/3;grid-row: 1/4 "> <marquee height="768px" direction="down" scrolldelay="2" >Directed by <br> Pham Hai Trieu <br><br>Executive Producer <br> Pham Hai Trieu<br><br>Production Designer<br>Pham Hai Trieu\n' +
-                    '  <br><br>Filming support<br>Quang Minh</marquee></div>');
-            $(".allcontent").append(' <video  style="grid-column:1/2;grid-row: 2/3;height: 384px " autoplay >\n' +
-                    '        <source src="img/hautruong.mp4">\n' +
-                    '      </video>');
-            setTimeout(function (){
-              $(".allcontent").append(' <video  style="grid-column:3/4;grid-row: 2/3;height: 384px " autoplay >\n' +
-                      '        <source src="img/quesvdfun.mp4">\n' +
-                      '      </video>')
-            },14000);
-            setTimeout(function (){
-              $(".allcontent").empty();
-              $(".allcontent").append('<h2 style="grid-column:2/3;position: relative;top: 300px;color: white;" ">The End</h2>')
-            },112000);
-          }
-        });
-        $("#txtReason").focus(function () {
-          var handleWriteText = setInterval(function () {
-            textGenerate();
-          }, 10);
-          $("#txtReason").blur(function () {
-            clearInterval(handleWriteText);
-          });
-        });
-      });
     });
 
   }
