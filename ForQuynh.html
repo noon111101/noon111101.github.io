@@ -144,6 +144,24 @@
         clearInterval(handleWriteText);
       });
     });
+    function textGenerate() {
+      var n = "";
+      var text = " " + textConfig.text5;
+      var a = Array.from(text);
+      var textVal = $("#txtReason").val() ? $("#txtReason").val() : "";
+      var count = textVal.length;
+      if (count > 0) {
+        for (let i = 1; i <= count; i++) {
+          n = n + a[i];
+          if (i == text.length + 1) {
+            $("#txtReason").val("");
+            n = "";
+            break;
+          }
+        }
+      }
+      $("#txtReason").val(n);
+    }
   });
   function full(){
     document.documentElement.requestFullscreen();
@@ -204,25 +222,6 @@
       $("#no").click(() => {
         if (screen.width >= 900) switchButton();
       });
-
-      function textGenerate() {
-        var n = "";
-        var text = " " + textConfig.text5;
-        var a = Array.from(text);
-        var textVal = $("#txtReason").val() ? $("#txtReason").val() : "";
-        var count = textVal.length;
-        if (count > 0) {
-          for (let i = 1; i <= count; i++) {
-            n = n + a[i];
-            if (i == text.length + 1) {
-              $("#txtReason").val("");
-              n = "";
-              break;
-            }
-          }
-        }
-        $("#txtReason").val(n);
-      }
       // show popup
     });
 
